@@ -8,24 +8,30 @@ let choosenAnswer = "";
 let updateAnswer = (event: any) => {
   choosenAnswer = event.target.value;
 };
-export const Multiple = (props: any) => {
+export const TextQues = (props: any) => {
   choosenAnswer = "";
-  let answers = shuffle([props.correctAnswer, ...props.inCorrectAnswer]).map(
-    (x: any) => (
-      <div style={{ padding: 10, fontSize: 16 }}>
-        <input id={x} type="radio" value={x} name={props.question} />
-        {x}
-      </div>
-    )
-  );
   return (
     <div>
-      <div style={{ minWidth: 600, maxWidth: 600, padding: 15, fontSize: 18 }}>
+      <div style={{ minWidth: 600, maxWidth: 600, padding: 20, fontSize: 20 }}>
         {props.quesNum}- {props.question}
       </div>
-      <div onChange={updateAnswer} style={{ minHeight: 200 }}>
-        {answers}
+      <div
+        style={{
+          padding: 10,
+          fontSize: 18,
+          textAlign: "center",
+          minHeight: 200,
+        }}
+      >
+        <input
+          type="text"
+          onChange={updateAnswer}
+          placeholder="Enter Your Answer Here"
+          className="form-control"
+          style={{ width: 400 }}
+        />
       </div>
+
       <Button
         variant="primary"
         onClick={() => props.nextQuestion(choosenAnswer == props.correctAnswer)}
